@@ -4,7 +4,7 @@ void DisplayMatrix() {
 
 }
 
-void FillZeros() {
+void FillZeros(int *x) {
 
 }
 
@@ -40,5 +40,9 @@ int GetLength() {
 
 int main() {
 	int length = GetLength();
+	int matrix[length][length];
+	std::cout << "First: " << matrix[0][0] << std::endl;
+	FillZeros(*matrix);
+	std::cout << "First: " << matrix[0][0] << std::endl;
 	return 0;
 }
