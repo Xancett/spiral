@@ -1,11 +1,21 @@
 # include <iostream>
 
-void DisplayMatrix() {
+class Spiral {
+	public:
+	  int arry[0];
+	  int length;
+};
 
+void DisplayMatrix()
+{
 }
 
-void FillZeros(int *x) {
-
+void FillZeros(int *x, int size) {
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			x[i][j] = 0;
+		}
+	}
 }
 
 void Spiral() {
@@ -42,7 +52,7 @@ int main() {
 	int length = GetLength();
 	int matrix[length][length];
 	std::cout << "First: " << matrix[0][0] << std::endl;
-	FillZeros(*matrix);
+	FillZeros(*matrix, length);
 	std::cout << "First: " << matrix[0][0] << std::endl;
 	return 0;
 }
