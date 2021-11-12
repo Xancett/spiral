@@ -1,26 +1,30 @@
 # include <iostream>
 
-class Spiral {
+
+class Spiral{
 	public:
-	  int arry[0];
+	  int matrix[0];
 	  int length;
 };
 
-void DisplayMatrix()
-{
+// Fills the matrix array inside of spiral with 0's
+void FillZeros(Spiral& s) {
+	for (int i = 0; i < sizeof(s.matrix) / sizeof(s.matrix[0]); i++){
+		s.matrix[i] = 0;
+	}
 }
 
-void FillZeros(int *x, int size) {
-	for (int i = 0; i < size; i++) {
-		for (int j = 0; j < size; j++) {
-			x[i][j] = 0;
+// Displays the current matrix inside spiral
+void DisplayMatrix(Spiral& s) {
+	for (int i = 0; i < sizeof(s.matrix) / sizeof(s.matrix[0]); i++){
+		std::cout << s.matrix[i] << " ";
+		if ((i + 1) % s.length == 0) {
+			std::cout << std::endl;
 		}
 	}
 }
 
-void Spiral() {
 
-}
 
 int GetLength() {
 	int length = 0;
@@ -49,10 +53,15 @@ int GetLength() {
 }
 
 int main() {
-	int length = GetLength();
-	int matrix[length][length];
-	std::cout << "First: " << matrix[0][0] << std::endl;
-	FillZeros(*matrix, length);
-	std::cout << "First: " << matrix[0][0] << std::endl;
+	Spiral spiral;
+	spiral.length = GetLength();
+	// Increase size of the array
+	int *newArr = new int[spiral.length * spiral.length];
+	//std::copy(spiral.matrix, spiral.matrix + std::min(0, (spiral.length * spiral.length)), newArr);
+	int *temp = spiral.matrix;
+	spiral.matrix = newArr;
+	delete[] temp;
+	FillZeros(spiral);
+	DisplayMatrix(spiral);
 	return 0;
 }
